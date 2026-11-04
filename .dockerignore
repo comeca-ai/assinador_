@@ -1,0 +1,16 @@
+.git
+.github
+.venv
+.env
+.env.*
+!.env.example
+runtime
+**/runtime
+**/__pycache__
+**/*.pyc
+**/*.key
+**/*.sqlite3
+**/*.sqlite3-*
+**/*.class
+node_modules
+*.zip

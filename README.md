@@ -17,6 +17,10 @@ python3 run.py
 
 Abrir http://127.0.0.1:8000. Cadastre uma conta e uma empresa fictícias; não existe senha padrão. Para testar um envelope, baixe o PDF fictício pelo wizard ou use `examples/exemplo-ficticio.pdf`. O servidor escuta em loopback; não o exponha à Internet.
 
+## Homologação no Railway
+
+O [guia de correção do build](docs/RAILWAY.md) descreve o Dockerfile, a porta, o healthcheck e o volume persistente. A execução local mantém loopback; o container usa `ASSINA_HOST=0.0.0.0`. A implantação de produção continua pendente de validações.
+
 ## Implementado
 
 - Landing e aplicativo em português, CSS responsivo, painel, busca/filtros de documentos, wizard de três etapas, detalhe, participantes, modelos CRUD, auditoria, empresas, equipe, marca e quotas.

@@ -12,6 +12,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from .db import Database
+from .config import resolve_origin,HEALTHCHECK_HOST
 from .storage import Store, validate_pdf, MAX_PDF
 from .security import (uid,token,digest,canonical,utc,password_hash,password_ok,append_event,verify_chain,
                        TERMS,TERMS_VERSION,TERMS_HASH)
@@ -49,17 +50,12 @@ def create_app(data_dir=None,origin=None):
     if os.getenv('ASSINA_MODE','homologacao')!='homologacao':
         raise RuntimeError('Produção bloqueada: versão exclusiva de homologação.')
     data=Path(data_dir or os.getenv('ASSINA_DATA',BASE/'runtime'))
-    expected_origin=origin or os.getenv('ASSINA_ORIGIN','http://127.0.0.1:8000')
-    parsed=urlsplit(expected_origin)
-    if parsed.path or parsed.query or parsed.fragment or parsed.username or not parsed.hostname:
-        raise RuntimeError('ASSINA_ORIGIN deve ser apenas esquema, host e porta.')
-    if parsed.scheme!='https' and parsed.hostname not in ('127.0.0.1','localhost','testserver'):
-        raise RuntimeError('HTTP só é permitido em loopback local.')
+    expected_origin,parsed=resolve_origin(origin)
     db=Database(data/'assina.sqlite3');store=Store(data/'objects')
     dummy_hash=password_hash('senha-inexistente-de-teste-2026')
     app=FastAPI(title='Assina Brasil - Homologação',version='0.2.0',docs_url=None,redoc_url=None,openapi_url='/api/openapi.json')
     app.state.db=db;app.state.store=store;app.state.origin=expected_origin
-    app.add_middleware(TrustedHostMiddleware,allowed_hosts=[parsed.hostname])
+    app.add_middleware(TrustedHostMiddleware,allowed_hosts=[parsed.hostname,HEALTHCHECK_HOST])
     app.add_middleware(BodyLimit)
 
     def fail(status,msg): raise HTTPException(status,msg)
@@ -76,7 +72,13 @@ def create_app(data_dir=None,origin=None):
     @app.middleware('http')
     async def guards(request,call_next):
         path=request.url.path
-        if path.startswith('/api/'):
+        host=request.headers.get('host','').split(':',1)[0].lower()
+        if host==HEALTHCHECK_HOST and (path!='/api/health' or request.method!='GET'):
+            response=JSONResponse({'detail':'Host reservado para healthcheck.'},400)
+        elif path=='/api/health' and request.method=='GET':
+            # Deployment probes never consume the users' rate-limit bucket.
+            response=await call_next(request)
+        elif path.startswith('/api/'):
             ip=request.client.host if request.client else 'unknown'
             # Rate key uses a keyed digest, not a stored raw IP; forwarded headers untrusted.
             import hmac,hashlib
