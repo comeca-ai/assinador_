@@ -1,0 +1,156 @@
+{
+  "mode": "homologacao",
+  "identity_verified": false,
+  "trusted_timestamp": false,
+  "worm_storage": false,
+  "chain_scope": "organization",
+  "chain_valid": true,
+  "events": [
+    {
+      "seq": 1,
+      "id": "d10210efd7a892603e7cf6ee1a2effc6",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": null,
+      "event_type": "ORGANIZATION_CREATED",
+      "actor": "bf277caf138600da5c28d1a04e838ceb",
+      "time_utc": "2026-11-04T14:38:21.133175Z",
+      "payload": "{}",
+      "prev_event_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "event_hash": "a51d923a419a63691c713edaf269fef6e6c1d66720997fbf9fee0ba2acaaa678"
+    },
+    {
+      "seq": 2,
+      "id": "32fdee1434bc096397a30d1ddbdb6b8f",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "DOCUMENT_UPLOADED",
+      "actor": "bf277caf138600da5c28d1a04e838ceb",
+      "time_utc": "2026-11-04T14:38:21.156363Z",
+      "payload": "{\"original_sha256\":\"49e12b754928962a40f62ad76ad8b2044fcf94310d16a17e751704c1b59f1fe2\",\"pages\":1,\"size\":43301}",
+      "prev_event_hash": "a51d923a419a63691c713edaf269fef6e6c1d66720997fbf9fee0ba2acaaa678",
+      "event_hash": "88965a1b0c06b8497cbfca7db727e0c3cfd80650802218cf38583cbfca6779cc"
+    },
+    {
+      "seq": 3,
+      "id": "12a943b2f3afdc571e1059dc74c6e381",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "SIGNER_ADDED",
+      "actor": "bf277caf138600da5c28d1a04e838ceb",
+      "time_utc": "2026-11-04T14:38:21.166295Z",
+      "payload": "{\"position\":1,\"signer_id\":\"851f9c699d50f851bad503f6cbaeeff0\"}",
+      "prev_event_hash": "88965a1b0c06b8497cbfca7db727e0c3cfd80650802218cf38583cbfca6779cc",
+      "event_hash": "0e25cbffc9fe81e1282d1cd744861f44d8dd87810cbf3ac3dc4a728e4e15d77d"
+    },
+    {
+      "seq": 4,
+      "id": "13e04a5fd7b12f7e41ec8f1e800506cf",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "ENVELOPE_AVAILABLE_TEST",
+      "actor": "bf277caf138600da5c28d1a04e838ceb",
+      "time_utc": "2026-11-04T14:38:21.173353Z",
+      "payload": "{\"email_sent\":false}",
+      "prev_event_hash": "0e25cbffc9fe81e1282d1cd744861f44d8dd87810cbf3ac3dc4a728e4e15d77d",
+      "event_hash": "fd6d357dfb8c2d9df6901d8b1e4a72dadd511620129bc295b049bc1c76e99ed0"
+    },
+    {
+      "seq": 5,
+      "id": "7edec4239f872ff257fc0098422c1e98",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "LINK_ISSUED",
+      "actor": "bf277caf138600da5c28d1a04e838ceb",
+      "time_utc": "2026-11-04T14:38:21.183608Z",
+      "payload": "{\"expires_at\":1793889501.1834245,\"signer_id\":\"851f9c699d50f851bad503f6cbaeeff0\"}",
+      "prev_event_hash": "fd6d357dfb8c2d9df6901d8b1e4a72dadd511620129bc295b049bc1c76e99ed0",
+      "event_hash": "1b37bb8f43d80da201ef20a695c3a204a6d736dc0928f0f1c7223046ba5b72ec"
+    },
+    {
+      "seq": 6,
+      "id": "89cb2f7a3638c647a929965e568918c9",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "LINK_OPENED",
+      "actor": "851f9c699d50f851bad503f6cbaeeff0",
+      "time_utc": "2026-11-04T14:38:21.192946Z",
+      "payload": "{}",
+      "prev_event_hash": "1b37bb8f43d80da201ef20a695c3a204a6d736dc0928f0f1c7223046ba5b72ec",
+      "event_hash": "1d3542a2394e7077be882cf194281ffab841f8e70e6ae370d7fa7386e81ad334"
+    },
+    {
+      "seq": 7,
+      "id": "b147ea47ff0fafd1f8be1b869e659334",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "CONSENT_ACCEPTED",
+      "actor": "851f9c699d50f851bad503f6cbaeeff0",
+      "time_utc": "2026-11-04T14:38:21.204492Z",
+      "payload": "{\"terms_sha256\":\"19ddab8f6560685c05986d41de7a8e02a3999f6dad66283983d8640df88f7d99\",\"terms_version\":\"homologacao-2026-11-v1\"}",
+      "prev_event_hash": "1d3542a2394e7077be882cf194281ffab841f8e70e6ae370d7fa7386e81ad334",
+      "event_hash": "faac0329593f3864aec6ac011b3d8f420b35b41557e2fd504d7076208b953b69"
+    },
+    {
+      "seq": 8,
+      "id": "5d5677f3a0d0ed7afd9183b17730230d",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "INTENT_CONFIRMED_TEST",
+      "actor": "851f9c699d50f851bad503f6cbaeeff0",
+      "time_utc": "2026-11-04T14:38:21.211983Z",
+      "payload": "{\"declared_name_sha256\":\"47623fc3760804c99d8f0168fa7d21f8082efe13b3b311e4df17a77b6f748527\",\"identity_verified\":false,\"original_sha256\":\"49e12b754928962a40f62ad76ad8b2044fcf94310d16a17e751704c1b59f1fe2\"}",
+      "prev_event_hash": "faac0329593f3864aec6ac011b3d8f420b35b41557e2fd504d7076208b953b69",
+      "event_hash": "2a12d1218b07e0c7005bcf33e4c60e4b8b86eeb32d570d61196624ff72f94499"
+    },
+    {
+      "seq": 9,
+      "id": "cd2350fd3533f5a95fbfb3c670fca3f6",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "ENVELOPE_COMPLETED_TEST",
+      "actor": "851f9c699d50f851bad503f6cbaeeff0",
+      "time_utc": "2026-11-04T14:38:21.212183Z",
+      "payload": "{}",
+      "prev_event_hash": "2a12d1218b07e0c7005bcf33e4c60e4b8b86eeb32d570d61196624ff72f94499",
+      "event_hash": "c1842fa2991b740170bbd60763068204b19c7542ea26611bd01ed0ede212b22f"
+    },
+    {
+      "seq": 10,
+      "id": "8543b2b4cc69448f4aef8fcaa212a348",
+      "org_id": "c858ffa9e40260cfa3ab700b5d287411",
+      "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+      "event_type": "ARTIFACT_CREATED_TEST",
+      "actor": "system",
+      "time_utc": "2026-11-04T14:38:21.237450Z",
+      "payload": "{\"final_sha256\":\"c51f3bb79494a05c8ec2d5357abc360e691bac2591f6614daab674fde4001cf0\"}",
+      "prev_event_hash": "c1842fa2991b740170bbd60763068204b19c7542ea26611bd01ed0ede212b22f",
+      "event_hash": "73c1b3ac422b51f8f2cf288882ea1c6af8d2104d3c197629fc1b2fcd63045b0d"
+    }
+  ],
+  "terms": {
+    "version": "homologacao-2026-11-v1",
+    "text": "Confirmo que revisei o PDF indicado por seu hash SHA-256 e desejo registrar minha intenção de assinar neste ambiente de homologação. O nome informado é autodeclarado; a posse do link não verifica minha identidade. Este teste não é assinatura ICP-Brasil e não foi homologado para uso jurídico. Nome declarado, versão dos termos, hashes e horários UTC serão armazenados como evidências de teste. Não envie dados pessoais ou contratos reais.",
+    "sha256": "19ddab8f6560685c05986d41de7a8e02a3999f6dad66283983d8640df88f7d99"
+  },
+  "envelope_id": "c8576632c28018fe670a6441e7f8c01b",
+  "original_sha256": "49e12b754928962a40f62ad76ad8b2044fcf94310d16a17e751704c1b59f1fe2",
+  "final_sha256": "c51f3bb79494a05c8ec2d5357abc360e691bac2591f6614daab674fde4001cf0",
+  "signers": [
+    {
+      "id": "851f9c699d50f851bad503f6cbaeeff0",
+      "position": 1,
+      "declared_name": "Pessoa Fictícia",
+      "confirmed_at": "2026-11-04T14:38:21.211859Z",
+      "status": "CONFIRMED_TEST"
+    }
+  ],
+  "consents": [
+    {
+      "signer_id": "851f9c699d50f851bad503f6cbaeeff0",
+      "terms_version": "homologacao-2026-11-v1",
+      "terms_sha256": "19ddab8f6560685c05986d41de7a8e02a3999f6dad66283983d8640df88f7d99",
+      "terms_text": "Confirmo que revisei o PDF indicado por seu hash SHA-256 e desejo registrar minha intenção de assinar neste ambiente de homologação. O nome informado é autodeclarado; a posse do link não verifica minha identidade. Este teste não é assinatura ICP-Brasil e não foi homologado para uso jurídico. Nome declarado, versão dos termos, hashes e horários UTC serão armazenados como evidências de teste. Não envie dados pessoais ou contratos reais.",
+      "accepted_at": "2026-11-04T14:38:21.204260Z"
+    }
+  ]
+}

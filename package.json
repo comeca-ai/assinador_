@@ -1,0 +1,10 @@
+{
+  "name":"assina-brasil-homologacao",
+  "version":"0.2.0",
+  "private":true,
+  "scripts":{
+    "dev":"python3 run.py",
+    "check":"python3 -m compileall -q backend && node --check web/app.js",
+    "test":"python3 -m unittest discover -s tests -v"
+  }
+}

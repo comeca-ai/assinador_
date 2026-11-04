@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: Assina Brasil - fronteira Java ICP-Brasil
+  version: 0.2.0
+  description: Contrato preparado. Todas as operacoes retornam 501. Sem assinatura ou validacao simulada.
+servers:
+  - url: http://127.0.0.1:9090
+security:
+  - internalToken: []
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          description: signingEnabled=false; libraryLoaded=false
+  /v1/validateCertificateChain:
+    post:
+      operationId: validateCertificateChain
+      responses:
+        '501':
+          description: ICP_BRASIL_NOT_CONFIGURED, verified=false
+  /v1/validateSignature:
+    post:
+      operationId: validateSignature
+      responses:
+        '501':
+          description: ICP_BRASIL_NOT_CONFIGURED, verified=false
+  /v1/signPades:
+    post:
+      operationId: signPades
+      responses:
+        '501':
+          description: ICP_BRASIL_NOT_CONFIGURED, signed=false
+  /v1/verifyPades:
+    post:
+      operationId: verifyPades
+      responses:
+        '501':
+          description: ICP_BRASIL_NOT_CONFIGURED, verified=false
+components:
+  securitySchemes:
+    internalToken:
+      type: apiKey
+      in: header
+      name: X-Internal-Token
