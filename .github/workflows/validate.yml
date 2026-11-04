@@ -1,0 +1,47 @@
+name: Validate homologation
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  tests-and-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install locked dependencies
+        run: |
+          python -m pip install --only-binary=:all: -r requirements.lock
+          python -m pip check
+      - name: Test application and disabled Java boundary
+        run: |
+          java -version
+          python -m unittest discover -s tests -v
+          python -m compileall -q backend tools run.py
+          node --check web/app.js
+          python tools/verify_evidence.py examples/evidencias-exemplo.json --original examples/exemplo-ficticio.pdf --final examples/exemplo-final-homologacao.pdf
+      - name: Build runtime image
+        run: docker build --tag assina-brasil:ci .
+      - name: Probe container with platform PORT and Host
+        run: |
+          docker run -d --name assina-smoke -e PORT=8097 assina-brasil:ci
+          for attempt in $(seq 1 30); do
+            if docker exec assina-smoke python tools/healthcheck.py; then
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs assina-smoke
+          exit 1
+      - name: Remove test container
+        if: always()
+        run: docker rm -f assina-smoke || true
